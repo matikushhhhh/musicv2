@@ -45,10 +45,12 @@
           </li>
         </ul>
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <li class="nav-item d-flex">
             <a class="nav-link" href="{% url 'cart' %}">
-                <i class="fas fa-shopping-cart"></i>
+                <i id="cart-icon"class="fas fa-shopping-cart"></i>
+                <p id="cart-total" class="float-end">{{cartItems}}</p>
             </a>
+            
           </li>
           {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
@@ -82,6 +84,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
   {% block js %}
 
   {% endblock %}
