@@ -115,8 +115,8 @@ def login(request):
     if request.method == 'POST':
         formulario = LoginForm(data=request.POST)
         if formulario.is_valid():
-            Usuario = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password"])
-            auth_login(request,Usuario)
+            user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password"])
+            auth_login(request,user)
             messages.success(request, "Logueo exitoso")
             return redirect(to="home")
         data['from'] = formulario
@@ -130,7 +130,7 @@ def register(request):
         formulario = RegistroForms(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password"])
+            user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
             auth_login(request, user)
             messages.success(request, "Registro exitoso")
             return redirect(to="home")
