@@ -7,13 +7,16 @@ from rest_framework import serializers
 from .models import *
 from .forms import *
 from rest_framework import viewsets
-from .serializers import ProductoSerializer
 import json
 import requests
 from django.views.decorators.csrf import csrf_exempt
+<<<<<<< HEAD
 from .services import get_starWars
 from .services import get_initTrxTBK, get_statusTBK
 from django.contrib.auth import authenticate,login
+=======
+from django.shortcuts import render
+>>>>>>> c65d61211e6a2c3e0eb30aba477b322a3494d3b0
 
 
 # Create your views here.
@@ -21,15 +24,35 @@ def home(request):
     return render(request, 'app/home.html')
 
 
-from django.shortcuts import render
+
 
 def store(request):
+<<<<<<< HEAD
 	context = {}
 	return render(request, 'app/store.html', context)
 
 def cart(request):
 	context = {}
 	return render(request, 'app/cart.html', context)
+=======
+	products = Product.objects.all()
+	context = {'products':products}
+	return render(request, 'store/store.html', context)
+
+def cart(request):
+
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order, created = Order.objects.get_or_create(customer=customer, complete=False)
+		items = order.orderitem_set.all()
+	else:
+		#Create empty cart for now for non-logged in user
+		items = []
+		order = {'get_cart_total':0, 'get_cart_items':0}
+
+	context = {'items':items, 'order':order}
+	return render(request, 'store/cart.html', context)
+>>>>>>> c65d61211e6a2c3e0eb30aba477b322a3494d3b0
 
 def checkout(request):
 	context = {}
