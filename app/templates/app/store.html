@@ -19,6 +19,7 @@
 		<div class="box-element product">
 			<h2 id="nombreproducto" class="align-center"><strong>{{product.name}}</strong></h2>
 			<hr>
+<<<<<<< HEAD
 			<h4 id="precioproducto" class="align-items-end" style="display: inline-block">${{product.price|floatformat:0}}</h4>
 			<br>
 			<div class="d-flex justify-content-between ">
@@ -27,6 +28,12 @@
 			</div>
 			
 			
+=======
+
+			<button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+			<a class="btn btn-outline-success" href="#">View</a>
+			<h4 style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
+>>>>>>> 937860fc8e90af51961724ba15ae131059c2cf9f
 
 		</div>
 	</div>
