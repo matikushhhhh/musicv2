@@ -11,7 +11,6 @@ from rest_framework import viewsets
 import json
 import requests
 from django.views.decorators.csrf import csrf_exempt
-from .services import get_starWars
 from .services import get_initTrxTBK, get_statusTBK
 from django.http import JsonResponse
 import json
@@ -136,5 +135,20 @@ def register(request):
             return redirect(to="home")
         data['from'] = formulario
     return render(request, 'registration/register.html', data)
+
+#API WEBBAY
+
+def tbk(request):
+    data = {
+        'resultado': get_initTrxTBK()
+    }
+    return render(request, 'app/initTrxTbk.html',data)
+
+@csrf_exempt
+def statusTrx(request):
+    data = {
+        'resultado': get_statusTBK(request)
+    }
+    return render(request, 'app/statusTrx.html',data)
 
 	
