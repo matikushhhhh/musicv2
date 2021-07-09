@@ -1,6 +1,17 @@
-{% extends 'app/main.html' %}
+{% extends 'app/base.html' %}
+
 {% load static %}
-{% block content %}
+{% load humanize %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block contenido %}
 <div class="row">
 	{% for product in products %}
 	<div class="col-lg-4">
@@ -9,7 +20,8 @@
 			<h6><strong>{{product.name}}</strong></h6>
 			<hr>
 
-			<button data-product={{product.id}} data-actions="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+			<button data-product={{product.id}} data-actions="add"
+				class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
 			<a class="btn btn-outline-success" href="#">View</a>
 			<h4 style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
 
@@ -17,5 +29,4 @@
 	</div>
 	{% endfor %}
 </div>
-
-{% endblock content %}
+{% endblock %}
