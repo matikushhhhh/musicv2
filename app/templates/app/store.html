@@ -12,18 +12,21 @@
 {% endblock %}
 
 {% block contenido %}
-<div class="row">
+<div class="row justify-content-around align-items-center">
 	{% for product in products %}
-	<div class="col-lg-4">
+	<div id="productitoseparado" class="col-lg-3">
 		<img class="thumbnail" src="{{product.imageURL}}">
 		<div class="box-element product">
-			<h6><strong>{{product.name}}</strong></h6>
+			<h2 id="nombreproducto" class="align-center"><strong>{{product.name}}</strong></h2>
 			<hr>
-
-			<button data-product={{product.id}} data-actions="add"
-				class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
-			<a class="btn btn-outline-success" href="#">View</a>
-			<h4 style="display: inline-block; float: right"><strong>${{product.price|floatformat:2}}</strong></h4>
+			<h4 id="precioproducto" class="align-items-end" style="display: inline-block">${{product.price|floatformat:0}}</h4>
+			<br>
+			<div class="d-flex justify-content-between ">
+				<a class="btn btn-outline-secondary " href="#">Ver</a>
+				<button data-product={{product.id}} data-action="add" class="btn btn-outline-primary add-btn update-cart">Añadir al Carrito</button>
+			</div>
+			
+			
 
 		</div>
 	</div>
