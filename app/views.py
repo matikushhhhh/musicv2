@@ -7,7 +7,6 @@ from rest_framework import serializers
 from .models import *
 from .forms import *
 from rest_framework import viewsets
-from .serializers import ProductoSerializer
 import json
 import requests
 from django.views.decorators.csrf import csrf_exempt
@@ -24,12 +23,12 @@ from django.shortcuts import render
 
 def store(request):
 	context = {}
-	return render(request, 'store/store.html', context)
+	return render(request, 'app/store.html', context)
 
 def cart(request):
 	context = {}
-	return render(request, 'store/cart.html', context)
+	return render(request, 'app/cart.html', context)
 
 def checkout(request):
 	context = {}
-	return render(request, 'store/checkout.html', context)
+	return render(request, 'app/checkout.html', context)

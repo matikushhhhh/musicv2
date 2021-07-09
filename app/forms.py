@@ -1,10 +1,10 @@
 from django import forms
 from django.db.models import fields
-from .models import Producto
+from .models import Product
 
 
 
-class ProductoForm(forms.ModelForm):
+class ProductForm(forms.ModelForm):
     class Meta:
-        model = Producto
+        model = Product
         fields = '__all__'
