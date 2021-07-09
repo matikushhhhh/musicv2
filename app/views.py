@@ -4,6 +4,7 @@ from django.forms.widgets import ClearableFileInput
 from django.shortcuts import render, redirect, get_object_or_404
 import rest_framework
 from rest_framework import serializers
+from django.contrib import messages
 from .models import *
 from .forms import *
 from rest_framework import viewsets
@@ -12,9 +13,10 @@ import requests
 from django.views.decorators.csrf import csrf_exempt
 from .services import get_starWars
 from .services import get_initTrxTBK, get_statusTBK
-from django.contrib.auth import authenticate,login
 from django.http import JsonResponse
 import json
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 
 def home(request):
 	return render(request,'app/home.html')
@@ -106,3 +108,34 @@ def updateItem(request):
 		orderItem.delete()
 
 	return JsonResponse('Item was added', safe=False)
+
+def login(request):
+    data = {
+        'form':LoginForm()
+    }
+    if request.method == 'POST':
+        formulario = LoginForm(data=request.POST)
+        if formulario.is_valid():
+            Usuario = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password"])
+            auth_login(request,Usuario)
+            messages.success(request, "Logueo exitoso")
+            return redirect(to="home")
+        data['from'] = formulario
+    return render(request, 'registration/login.html', data)
+
+def register(request):
+    data = {
+        'form':RegistroForms()
+    }
+    if request.method == 'POST':
+        formulario = RegistroForms(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password"])
+            auth_login(request, user)
+            messages.success(request, "Registro exitoso")
+            return redirect(to="home")
+        data['from'] = formulario
+    return render(request, 'registration/register.html', data)
+
+	

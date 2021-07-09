@@ -1,6 +1,17 @@
-{% extends 'app/main.html' %}
+{% extends 'app/base.html' %}
+
 {% load static %}
-{% block content %}
+{% load humanize %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block contenido %}
 <div class="row">
 	{% for product in products %}
 	<div class="col-lg-4">
@@ -17,5 +28,4 @@
 	</div>
 	{% endfor %}
 </div>
-
-{% endblock content %}
+{% endblock %}
