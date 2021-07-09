@@ -13,6 +13,7 @@ import requests
 from django.views.decorators.csrf import csrf_exempt
 from .services import get_starWars
 from .services import get_initTrxTBK, get_statusTBK
+from django.contrib.auth import authenticate,login
 
 
 # Create your views here.
@@ -24,12 +25,30 @@ from django.shortcuts import render
 
 def store(request):
 	context = {}
-	return render(request, 'store/store.html', context)
+	return render(request, 'app/store.html', context)
 
 def cart(request):
 	context = {}
-	return render(request, 'store/cart.html', context)
+	return render(request, 'app/cart.html', context)
 
 def checkout(request):
 	context = {}
-	return render(request, 'store/checkout.html', context)
+	return render(request, 'app/checkout.html', context)
+
+
+def register(request):
+    data = {
+        'form':RegistroForms()
+    }
+    if request.method == 'POST':
+        formulario = RegistroForms(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"],password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "Registro exitoso")
+            return redirect(to="home")
+        data['from'] = formulario
+    return render(request, 'registration/register.html', data)
+
+

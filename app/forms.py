@@ -1,6 +1,8 @@
 from django import forms
 from django.db.models import fields
 from .models import Producto
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 
@@ -8,3 +10,7 @@ class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
         fields = '__all__'
+
+class RegistroForms(UserCreationForm):
+
+    pass
