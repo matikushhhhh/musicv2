@@ -10,13 +10,9 @@ from rest_framework import viewsets
 import json
 import requests
 from django.views.decorators.csrf import csrf_exempt
-<<<<<<< HEAD
 from .services import get_starWars
 from .services import get_initTrxTBK, get_statusTBK
 from django.contrib.auth import authenticate,login
-=======
-from django.shortcuts import render
->>>>>>> c65d61211e6a2c3e0eb30aba477b322a3494d3b0
 
 
 # Create your views here.
@@ -27,17 +23,9 @@ def home(request):
 
 
 def store(request):
-<<<<<<< HEAD
+	products = Product.onjects.all()
 	context = {}
 	return render(request, 'app/store.html', context)
-
-def cart(request):
-	context = {}
-	return render(request, 'app/cart.html', context)
-=======
-	products = Product.objects.all()
-	context = {'products':products}
-	return render(request, 'store/store.html', context)
 
 def cart(request):
 
@@ -51,8 +39,7 @@ def cart(request):
 		order = {'get_cart_total':0, 'get_cart_items':0}
 
 	context = {'items':items, 'order':order}
-	return render(request, 'store/cart.html', context)
->>>>>>> c65d61211e6a2c3e0eb30aba477b322a3494d3b0
+	return render(request, 'app/cart.html', context)
 
 def checkout(request):
 	context = {}
