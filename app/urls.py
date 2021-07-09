@@ -14,9 +14,11 @@ urlpatterns = [
 	path('cart/', cart, name="cart"),
 	path('checkout/', checkout, name="checkout"),
     path('update_item/', updateItem, name="updateItem"),
-
-	path('accounts/login/', login, name="login"),
+    path('accounts/login/', login, name="login"),
 	path('register/', register, name="register"),
+	path('tbk/', tbk, name="tbk"),
+    path('tbkRes', tbk, name="tbkRes"),
+    path('statusTrx/', statusTrx, name="statusTrx"),
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
