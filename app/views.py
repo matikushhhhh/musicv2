@@ -23,8 +23,13 @@ def home(request):
 
 
 def store(request):
+<<<<<<< HEAD
 	products = Product.onjects.all()
 	context = {}
+=======
+	products = Product.objects.all()
+	context = {'products':products}
+>>>>>>> ce3dea991215a98a81a62a554667cb3f8969df25
 	return render(request, 'app/store.html', context)
 
 def cart(request):
@@ -43,6 +48,7 @@ def cart(request):
 
 def checkout(request):
 	context = {}
+<<<<<<< HEAD
 	return render(request, 'app/checkout.html', context)
 
 
@@ -62,3 +68,6 @@ def register(request):
     return render(request, 'registration/register.html', data)
 
 
+=======
+	return render(request, 'app/checkout.html', context)
+>>>>>>> ce3dea991215a98a81a62a554667cb3f8969df25
