@@ -10,8 +10,7 @@ from rest_framework import viewsets
 import json
 import requests
 from django.views.decorators.csrf import csrf_exempt
-from .services import get_starWars
-from .services import get_initTrxTBK, get_statusTBK
+from django.shortcuts import render
 
 
 # Create your views here.
@@ -19,16 +18,27 @@ def home(request):
     return render(request, 'app/home.html')
 
 
-from django.shortcuts import render
+
 
 def store(request):
-	context = {}
-	return render(request, 'app/store.html', context)
+	products = Product.objects.all()
+	context = {'products':products}
+	return render(request, 'store/store.html', context)
 
 def cart(request):
-	context = {}
-	return render(request, 'app/cart.html', context)
+
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order, created = Order.objects.get_or_create(customer=customer, complete=False)
+		items = order.orderitem_set.all()
+	else:
+		#Create empty cart for now for non-logged in user
+		items = []
+		order = {'get_cart_total':0, 'get_cart_items':0}
+
+	context = {'items':items, 'order':order}
+	return render(request, 'store/cart.html', context)
 
 def checkout(request):
 	context = {}
-	return render(request, 'app/checkout.html', context)
+	return render(request, 'store/checkout.html', context)
