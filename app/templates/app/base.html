@@ -11,10 +11,7 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-
-
    <script type="text/javascript">
-   
 		var user = '{{request.user}}'
 
 		function getToken(name) {
@@ -35,7 +32,6 @@
 		var csrftoken = getToken('csrftoken')
 	
 	</script>
-
   {% block css %}
   {% endblock %}
 </head>
@@ -70,12 +66,12 @@
           </li>
         </ul>
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <li class="nav-item d-flex">
             <a class="nav-link" href="{% url 'cart' %}">
-              
-                <i class="fas fa-shopping-cart"></i>
+                <i id="cart-icon"class="fas fa-shopping-cart"></i>
+                <p id="cart-total" class="float-end">{{cartItems}}</p>
             </a>
-            <p id="cart-total">{{cartItems}}</p>
+            
           </li>
           {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
@@ -109,9 +105,23 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 
-    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+  {% if messages %}
+      {% for m in messages %}
+        <script>
+          Swal.fire(
 
+              "Excelente",
+              "{{m}}",
+              "success"
+          )
+
+
+        </script>
+      {% endfor %}
+    {% endif %}
   {% block js %}
  
 
