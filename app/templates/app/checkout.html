@@ -16,35 +16,35 @@
 	<div class="col-5 shipping-info ">
 		<div class="box-element" id="form-wrapper">
 			<form id="form">
-
-
 				<h3>Información de Despacho:</h3>
 				<hr>
-				<div class="form-field">
-					<p>Dirección: </p>
-					<input class="form-control" type="text" name="address" placeholder="Ej.. Los Robles #1234">
-				</div>
-				<br>
-				<div class="form-field">
-					<p>Ciudad: </p>
-					<input class="form-control" type="text" name="city" placeholder="Ej.. Santiago">
-				</div>
-				<br>
-				<div class="form-field">
-					<p>Región: </p>
-					<input class="form-control" type="text" name="state" placeholder="Ej.. Región Metropolitana">
-				</div>
-				<br>
-				<div class="form-field">
-					<p>País: </p>
-					<input class="form-control" type="text" name="country" placeholder="Ej.. Chile">
-				</div>
-				<br>
-				<div class="form-field">
-					<p>Código Postal: </p>
-					<input class="form-control" type="text" name="zipcode" placeholder="Ej.. 8320000">
-				</div>
+				<div class="row form-group">
+					<div class="col-xs-5">
+						<p class="form-label">Dirección: </p>
+						<input class="form-control" style="margin-bottom: 15px;" type="text" name="address" placeholder="Ej.. Los Robles #1234">
+					</div>
+					<br>
+					<div class="col-xs-5">
+						<p class="form-label">Ciudad: </p>
+						<input class="form-control" style="margin-bottom: 15px;" type="text" name="city" placeholder="Ej.. Santiago">
+					</div>
+					<br>
+					<div class="col-xs-5">
+						<p class="form-label">Región: </p>
+						<input class="form-control" style="margin-bottom: 15px;" type="text" name="state" placeholder="Ej.. Región Metropolitana">
+					</div>
+					<br>
+					<div class="col-xs-5">
+						<p class="form-label">País: </p>
+						<input class="form-control" style="margin-bottom: 15px;" type="text" name="country" placeholder="Ej.. Chile">
+					</div>
+					<br>
+					<div class="col-xs-5">
+						<p class="form-label">Código Postal: </p>
+						<input class="form-control" style="margin-bottom: 15px;" type="text" name="zipcode" placeholder="Ej.. 8320000">
+					</div>
 
+				  </div>
 				<hr>
 				<input id="form-button" class="btn btn-outline-primary btn-block" type="submit" value="Continuar">
 
@@ -61,20 +61,25 @@
 	<div class="col-7 shipping-enfo ">
 		<div class="box-element">
 			<a class="btn btn-outline-secondary" href="{% url 'cart' %}">&#x2190; Volver al Carrito</a>
-			<hr>
-			<h3>Detalle</h3>
-			<hr>
+			<br><br>
+			<div class="cart-row d-flex justify-content-start text-center">
+				<div style="flex:2 "><strong>Imagen</strong></div>
+				<div style="flex:2"><strong>Producto</strong></div>
+				<div style="flex:1"><strong>Precio</strong></div>
+				<div style="flex:1"><strong>Cantidad</strong></div>
+			</div>
+			
 			{% for item in items %}
-			<div class="cart-row">
+			<div class="cart-row d-flex justify-content-start align-items-center text-center" style="height: 100px;">
 				<div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
 				<div style="flex:2">
 					<p>{{item.product.name}}</p>
 				</div>
 				<div style="flex:1">
-					<p>${{item.product.price|floatformat:2}}</p>
+					<p>${{item.product.price|intcomma}}</p>
 				</div>
 				<div style="flex:1">
-					<p>x{{item.quantity}}</p>
+					<p><strong>{{item.quantity}}</strong></p>
 				</div>
 			</div>
 			{% endfor %}
@@ -83,7 +88,7 @@
 
 			</div>
 			<div class="d-flex justify-content-end">
-				<h5>Total: ${{order.get_cart_total|floatformat:0}}</h5>
+				<h5>Total: <strong>${{order.get_cart_total|floatformat:0}}</strong></h5>
 			</div>
 		</div>
 	</div>

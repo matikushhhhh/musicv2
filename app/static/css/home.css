@@ -57,6 +57,9 @@ div.shipping-info{
 	border-style: solid;
 	border-width: 1px;
 }
+div.form-control-lg{
+	width: auto;
+}
 div.shipping-enfo{
 	width: 55%;
 	margin-left: 5%;
