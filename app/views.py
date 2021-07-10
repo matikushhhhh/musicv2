@@ -14,11 +14,24 @@ from django.views.decorators.csrf import csrf_exempt
 from .services import get_initTrxTBK, get_statusTBK
 from django.http import JsonResponse
 import json
+from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 
 def home(request):
-	return render(request,'app/home.html')
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order, created = Order.objects.get_or_create(customer=customer, complete=False)
+		items = order.orderitem_set.all()
+		cartItems = order.get_cart_items
+	else:
+		#Create empty cart for now for non-logged in user
+		items = []
+		order = {'get_cart_total':0, 'get_cart_items':0}
+		cartItems = order['get_cart_items']
+
+	context = {'items':items, 'order':order, 'cartItems':cartItems}
+	return render(request, 'app/home.html', context)
 # Create your views here.
 def register(request):
     data = {

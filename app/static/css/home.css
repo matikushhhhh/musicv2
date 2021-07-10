@@ -44,6 +44,30 @@ div.card{
 div.card-body{
     width: 70%;
 }
+div.row{
+	width: 100%;
+}
+div.shipping-info{
+	width: 40%;
+	background-color: rgb(33, 33, 33);
+	padding: 30px;
+	color: whitesmoke;
+	border-radius: 25px;
+	border-color: rgba(0,0,0,0.8);
+	border-style: solid;
+	border-width: 1px;
+}
+div.shipping-enfo{
+	width: 55%;
+	margin-left: 5%;
+	background-color: rgb(33, 33, 33);
+	padding: 30px;
+	color: whitesmoke;
+	border-radius: 25px;
+	border-color: rgba(0,0,0,0.8);
+	border-style: solid;
+	border-width: 1px;
+}
 img.card-img-top{
     margin-top: 10px;
     width: 75%;
@@ -117,13 +141,54 @@ button.btn.btn-primary.btn-lg.btn-floating.mx-2:hover{
 	border-radius: 50%;
 	font-size: 14px;
 }
-
+#carritito{
+	background-color: rgb(33, 33, 33);
+	padding: 30px;
+	color: whitesmoke;
+	border-radius: 25px;
+	border-color: rgba(0,0,0,0.8);
+	border-style: solid;
+	border-width: 1px;
+	
+}
+#cantidadnumero{
+	margin: 0px;
+	padding: 0px;
+}
+a.chg-quantity.update-cart{
+	color: #7c42dd;
+	margin-left: 5px;
+	margin-right: 5px;
+}
 .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
 	margin-top: 10px;
 }
 
 .btn{
 	border-radius: 0;
+}
+
+a.btn.btn-outline-primary{
+	border-color: transparent;
+	background-color: #7c42dd;
+	color: white;
+}
+a.btn.btn-outline-primary:hover{
+	border-color: transparent;
+	background-color: #7c42dd;
+	color: white;
+	box-shadow: inset 0px 0px 10px 3px rgba(255,255,255,0.3);
+}
+#form-button{
+	border-color: transparent;
+	background-color: #7c42dd;
+	color: white;
+}
+#form-button:hover{
+	border-color: transparent;
+	background-color: #7c42dd;
+	color: white;
+	box-shadow: inset 0px 0px 10px 3px rgba(255,255,255,0.3);
 }
 button.btn.btn-outline-primary{
 	border-color: transparent;
@@ -172,8 +237,11 @@ a.btn.btn-outline-secondary:hover{
     align-items: flex-stretch;
     padding-bottom: 10px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid black;
 
+}
+br{
+	color:black;
 }
 
 .quantity{
