@@ -7,7 +7,7 @@ from rest_framework import serializers
 from django.contrib import messages
 from .models import *
 from .forms import *
-from rest_framework import viewsets
+
 import json
 import requests
 from django.views.decorators.csrf import csrf_exempt
@@ -17,6 +17,9 @@ import json
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
+
+from rest_framework import viewsets
+from .serializers import  ProductSerializer
 
 def home(request):
 	if request.user.is_authenticated:
@@ -163,5 +166,12 @@ def statusTrx(request):
         'resultado': get_statusTBK(request)
     }
     return render(request, 'app/statusTrx.html',data)
+
+
+#api 
+
+class ProductViewSet(viewsets.ModelViewSet):
+	queryset = Product.objects.all()
+	serializer_class = ProductSerializer
 
 	
