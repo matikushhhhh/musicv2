@@ -16,7 +16,11 @@
 	
 	{% for product in products %}
 	<div id="productitoseparado" class="col">
+		{% if product.imageURL%}
 		<img class="thumbnail" src="{{product.imageURL}}">
+		{% else %}
+		<img class="thumbnail" src="{% static 'img/500.png' %}">
+		{% endif %}
 		<div class="box-element product">
 			<h2 id="nombreproducto" class=""><strong>{{product.name}}</strong></h2>
 			<hr>
