@@ -52,9 +52,12 @@
 		</div>
 
 		<br>
-		<div class="box-element hidden" id="payment-info">
-			<small>Paypal Options</small>
-		</div>
+		<form method="POST" enctype="multipart/form-data" action="{{resultado.url}}?token_ws={{resultado.token}}">{%csrf_token%}
+            <input type="hidden" name="token_ws" value="{{resultado.token}}" disabled>
+            <input type="submit"  value="Pagar" class="btn btn-success">
+        </form>
+	
+
 
 	</div>
 

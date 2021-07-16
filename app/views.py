@@ -154,6 +154,7 @@ def register(request):
 
 #API WEBBAY
 
+@csrf_exempt
 def tbk(request):
     data = {
         'resultado': get_initTrxTBK()
