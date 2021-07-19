@@ -15,7 +15,7 @@
 <div class="row d-flex">
 	<div class="col-5 shipping-info ">
 		<div class="box-element" id="form-wrapper">
-			<form id="form">
+			<form id="shipping-info">
 				<h3>Información de Despacho:</h3>
 				<hr>
 				<div class="row form-group">
@@ -96,4 +96,13 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	var shipping = '{{order.shipping}}'
+
+	if (shipping == 'False'){
+		 document.getElementById('shipping-info').innerHTML = ''
+	}
+</script>
+
 {% endblock %}
