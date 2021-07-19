@@ -44,7 +44,13 @@
 				</div>
 				{% for item in items %}
 				<div class="cart-row d-flex justify-content-start align-items-center text-center" style="height: 100px;">
-					<div style="flex:2"><img class="row-image" src="{{item.product.imagenURL}}"></div>
+					<div style="flex:2">
+						{% if item.product.imagenURL  %}
+						<img class="row-image" src="{{item.product.imagenURL}}">
+						{% else %}
+						<img class="row-image" src="{% static '/img/default.jpg' %}">
+						{% endif %}
+					</div>
 					<div style="flex:2">
 						<p>{{item.product.name|capfirst}}</p>
 					</div>

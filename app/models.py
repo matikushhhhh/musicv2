@@ -20,7 +20,7 @@ class Product(models.Model):
 	name = models.CharField(max_length=200)
 	marca = models.CharField(max_length=50,blank=True)
 	price = models.FloatField()
-	imagen = models.ImageField(upload_to="productos",default='default.jpg')
+	imagen = models.ImageField(upload_to="productos", blank = True)
 	digital = models.BooleanField(default=False, null=True, blank= True)
 
 	def __str__(self):

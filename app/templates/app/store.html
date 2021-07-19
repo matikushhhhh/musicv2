@@ -19,7 +19,7 @@
 		{% if product.imagenURL  %}
 		<img class="thumbnail" src="{{product.imagenURL}}">
 		{% else %}
-		<img class="thumbnail" src="{% static 'img/500.png' %}">
+		<img class="thumbnail" src="{% static '/img/default.jpg' %}">
 		{% endif %}
 		<div class="box-element product">
 			<h2 id="nombreproducto" class=""><strong>{{product.name}}</strong></h2>
