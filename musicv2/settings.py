@@ -88,9 +88,16 @@ WSGI_APPLICATION = 'musicv2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': '127.0.0.1:1521/xe',
+        'USER': 'c##musicpro',
+        'PASSWORD': 'pepegrillo',
+        'TEST': {
+            'USER': 'default_test',
+            'TBLSPACE': 'default_test_tbls',
+            'TBLSPACE_TMP': 'default_test_tbls_tmp',
+        },
+    },
 }
 
 
@@ -135,8 +142,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
     '/app/static',
 ]
-MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+MEDIA_URL = '/img/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'/static/img')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

@@ -41,3 +41,13 @@ def get_statusTBK(request):
        return response
 
 
+
+#Consumo de apis Django
+def generate_request(url, params={}):
+    try:
+        response = requests.get(url, params=params)
+        if response.status_code == 200:
+            return response.json()
+    except requests.exceptions.ConnectionError as e:
+        response = "Error: No existe respuesta del servidor"
+        return response
