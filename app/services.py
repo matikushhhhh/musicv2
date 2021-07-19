@@ -1,3 +1,4 @@
+from functools import total_ordering
 from django.http import response
 import requests
 import json
@@ -15,9 +16,10 @@ def generate_request_tbk(url, body):
     except requests.exceptions.ConnectionError as e:
         response = "No hay respuesta" 
         return response
+        
 def get_initTrxTBK():
-
-    body = json.dumps({"buy_order": "ordencompra", "session_id": "sesion1234557545", "amount": 10 , "return_url": "http://localhost:8000/tbkRes/" })
+    
+    body = json.dumps({"buy_order": "ordencompra", "session_id": "sesion1234557545", "amount":100, "return_url": "http://localhost:8000/tbkRes/" })
     url = "https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.0/transactions"
     response = generate_request_tbk(url, body)
     if response:
@@ -39,13 +41,3 @@ def get_statusTBK(request):
        return response
 
 
-
-#Consumo de apis Django
-def generate_request(url, params={}):
-    try:
-        response = requests.get(url, params=params)
-        if response.status_code == 200:
-            return response.json()
-    except requests.exceptions.ConnectionError as e:
-        response = "Error: No existe respuesta del servidor"
-        return response

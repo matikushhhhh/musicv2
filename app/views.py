@@ -60,7 +60,7 @@ def store(request):
 		cartItems = order.get_cart_items
 	else:
 		items = []
-		order = {'get_cart_total':0, 'get_cart_items':0}
+		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
 		cartItems = order['get_cart_items']
 
 	products = Product.objects.all()
@@ -68,6 +68,7 @@ def store(request):
 	return render(request, 'app/store.html', context)
 
 def cart(request):
+	
 
 	if request.user.is_authenticated:
 		customer = request.user.customer
@@ -77,26 +78,39 @@ def cart(request):
 	else:
 		#Create empty cart for now for non-logged in user
 		items = []
-		order = {'get_cart_total':0, 'get_cart_items':0}
+		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
 		cartItems = order['get_cart_items']
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'app/cart.html', context)
 
+
+
+@csrf_exempt
 def checkout(request):
+    data = {
+        
+        'resultado': get_initTrxTBK(),
+    }
+    return render(request, 'app/checkout.html', data)
+
+'''def checkout(request):
+	
 	if request.user.is_authenticated:
 		customer = request.user.customer
 		order, created = Order.objects.get_or_create(customer=customer, complete=False)
 		items = order.orderitem_set.all()
 		cartItems = order.get_cart_items
 	else:
-		#Create empty cart for now for non-logged in user
+		
 		items = []
-		order = {'get_cart_total':0, 'get_cart_items':0}
+		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
 		cartItems = order['get_cart_items']
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
-	return render(request, 'app/checkout.html', context)
+	return render(request, 'app/checkout.html', context)'''
+
+	
 
 def updateItem(request):
 	data = json.loads(request.body)
