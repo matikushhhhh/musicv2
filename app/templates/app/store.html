@@ -16,8 +16,8 @@
 	
 	{% for product in products %}
 	<div id="productitoseparado" class="col">
-		{% if product.imageURL%}
-		<img class="thumbnail" src="{{product.imageURL}}">
+		{% if product.imagenURL  %}
+		<img class="thumbnail" src="{{product.imagenURL}}">
 		{% else %}
 		<img class="thumbnail" src="{% static 'img/500.png' %}">
 		{% endif %}

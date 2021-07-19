@@ -19,15 +19,15 @@ class Product(models.Model):
 	name = models.CharField(max_length=200)
 	marca = models.CharField(max_length=50,blank=True)
 	price = models.FloatField()
-	image = models.ImageField(null=True, blank=True)
+	imagen = models.BinaryField(max_length=None)
 
 	def __str__(self):
 		return self.name
 
 	@property
-	def imageURL(self):
+	def imagenURL(self):
 		try:
-			url = self.image.url
+			url = self.imagen.url
 		except:
 			url = ''
 		return url

@@ -36,9 +36,6 @@ def get_statusTBK(request):
     url = "https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.0/transactions"
     response = get_status_trx(url, request.POST['token_ws'])
     if response:
-<<<<<<< HEAD
-       return response
-=======
        return response
 
 
@@ -52,4 +49,3 @@ def generate_request(url, params={}):
     except requests.exceptions.ConnectionError as e:
         response = "Error: No existe respuesta del servidor"
         return response
->>>>>>> 0734714099ca445bd50b8e02e47935ab55bbd8cf
