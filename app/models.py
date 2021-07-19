@@ -16,10 +16,11 @@ class Customer(models.Model):
 
 
 class Product(models.Model):
+	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=200)
 	marca = models.CharField(max_length=50,blank=True)
 	price = models.FloatField()
-	imagen = models.BinaryField(max_length=None)
+	imagen = models.ImageField(upload_to="productos",default='default.jpg')
 	digital = models.BooleanField(default=False, null=True, blank= True)
 
 	def __str__(self):
