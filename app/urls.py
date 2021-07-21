@@ -21,6 +21,8 @@ urlpatterns = [
     path('tbkRes/', tbk, name="tbkRes"),
     path('statusTrx/', statusTrx, name="statusTrx"),
 	path('api/',include(router.urls)),
+	path('terms/', terms, name="terms"),
+	path('about/', about, name="about"),
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

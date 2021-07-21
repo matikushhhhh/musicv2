@@ -19,7 +19,7 @@ def generate_request_tbk(url, body):
         
 def get_initTrxTBK():
     
-    body = json.dumps({"buy_order": "ordencompra", "session_id": "sesion1234557545", "amount":100, "return_url": "http://localhost:8000/tbkRes/" })
+    body = json.dumps({"buy_order": "ordencompra", "session_id": "sesion1234557545", "amount":2729254, "return_url": "http://localhost:8000/tbkRes/" })
     url = "https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.0/transactions"
     response = generate_request_tbk(url, body)
     if response:

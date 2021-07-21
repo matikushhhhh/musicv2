@@ -189,4 +189,10 @@ class ProductViewSet(viewsets.ModelViewSet):
 	queryset = Product.objects.all()
 	serializer_class = ProductSerializer
 
-	
+def terms(request):
+
+    return render(request, 'app/terms.html')
+
+def about(request):
+
+    return render(request, 'app/about.html')
