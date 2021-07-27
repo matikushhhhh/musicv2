@@ -14,13 +14,19 @@ class Customer(models.Model):
 	def __str__(self):
 		return self.name
 
+class categoria(models.Model):
+    nombre = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.nombre
+		
 class Product(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=200)
 	marca = models.CharField(max_length=50,blank=True)
 	price = models.FloatField()
 	imagen = models.ImageField(upload_to="productos", blank = True)
+	categoria = models.ForeignKey(categoria, on_delete=models.SET_NULL, blank=False, null=True)
 	digital = models.BooleanField(default=False, null=True, blank= True)
 
 	def __str__(self):
