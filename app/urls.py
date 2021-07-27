@@ -17,9 +17,7 @@ urlpatterns = [
     path('update_item/', updateItem, name="updateItem"),
     path('accounts/login/', login, name="login"),
 	path('register/', register, name="register"),
-	path('tbk/', tbk, name="tbk"),
-    path('tbkRes/', tbk, name="tbkRes"),
-    path('statusTrx/', statusTrx, name="statusTrx"),
+    path('tbkRes/', statusTrx, name="tbkRes"),
 	path('api/',include(router.urls)),
 ]
 
