@@ -1,0 +1,68 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center align-self-start">
+        <h2 class="">ÁREA DE ADMINISTRACIÓN</h2>
+    </div>
+    <hr>
+    <div class="container align-self-end">
+        <div class="row text-center">
+            <div class="col-md-4 pb-1 pb-md-0" style="margin-bottom: 15px;">
+                <div class="card">
+                    <div>
+                        <img src="{% static '/img/500.png' %}" style="padding: 15px;" class="card-img-top" alt="imagen">
+                    </div>
+                    <div class="card-body align-self-center align-items-center">
+                        <h5 class="card-title"><strong>Productos</strong></h5>
+                        <div class="container d-flex justify-content-center">
+                            <p class="lead" style="margin-top: 10px;"> <a class="btn btn-lg" href="{% url 'home' %}" role="button">Administrar</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pb-1 pb-md-0" style="margin-bottom: 15px;">
+                <div class="card">
+                    <div>
+                        <img src="{% static '/img/500.png' %}" style="padding: 15px;" class="card-img-top" alt="imagen">
+                    </div>
+                    <div class="card-body align-self-center align-items-center">
+                        <h5 class="card-title"><strong>Categorias</strong></h5>
+                        <div class="container d-flex justify-content-center">
+                            <p class="lead" style="margin-top: 10px;"> <a class="btn btn-lg" href="{% url 'home' %}" role="button">Administrar</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pb-1 pb-md-0" style="margin-bottom: 15px;">
+                <div class="card">
+                    <div>
+                        <img src="{% static '/img/500.png' %}" style="padding: 15px;" class="card-img-top" alt="imagen">
+                    </div>
+                    <div class="card-body align-self-center align-items-center">
+                        <h5 class="card-title"><strong>Categorias</strong></h5>
+                        <div class="container d-flex justify-content-center">
+                            <p class="lead" style="margin-top: 10px;"> <a class="btn btn-lg" href="{% url 'home' %}" role="button">Administrar</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}

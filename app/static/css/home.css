@@ -9,6 +9,7 @@
 	background-image: url('../img/fondo.png');
 	background-size: cover;
     background-color: darkgray;
+	background-repeat: repeat;
 }
 nav.navbar{
     background-color: rgba(0, 0, 0,0.65);

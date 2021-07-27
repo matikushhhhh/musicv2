@@ -23,7 +23,9 @@ urlpatterns = [
 	path('api/',include(router.urls)),
 	path('terms/', terms, name="terms"),
 	path('about/', about, name="about"),
-]
+	
+	path('administrador/',administrador, name='administrador'),
+		]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     

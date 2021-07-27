@@ -22,6 +22,7 @@ from rest_framework import viewsets
 from .serializers import  ProductSerializer
 
 def home(request):
+
 	if request.user.is_authenticated:
 		customer = request.user.customer
 		order, created = Order.objects.get_or_create(customer=customer, complete=False)
@@ -196,3 +197,7 @@ def terms(request):
 def about(request):
 
     return render(request, 'app/about.html')
+
+def administrador(request):
+
+    return render(request,'app/vistadmin/administracion.html')

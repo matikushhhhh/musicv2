@@ -58,6 +58,11 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'terms' %}">Términos y Condiciones</a>
           </li>
+          {% if user.is_staff %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'administrador' %}">Área Administración</a>
+          </li>
+          {% endif %}
         </ul>
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <li class="nav-item d-flex">
@@ -73,6 +78,10 @@
                             {{ user.username |title }}
                             </a>
                             <ul class="dropdown-menu" style="right:0; left: auto;" aria-labelledby="navbarDropdown">
+                                
+                                {% if user.is_staff %}
+                                <li><a class="dropdown-item" href="{% url 'administrador' %}">Área Administración</a></li>
+                                {% endif %}
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesion</a></li>
                               </ul>
                         </li>
