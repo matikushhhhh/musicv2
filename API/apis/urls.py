@@ -11,7 +11,7 @@ from rest_framework import routers
 
 
 router = routers.DefaultRouter()
-router.register('categoria',CategoriaViewset)
+router.register('Product',ProductViewset)
 
 urlpatterns = [
 

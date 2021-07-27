@@ -15,6 +15,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 # Create your views here.
-class CategoriaViewset(viewsets.ModelViewSet):
-    queryset = categoria.objects.all()
-    serializer_class = CateogiraSerializer
+class ProductViewset(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer

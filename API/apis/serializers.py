@@ -3,7 +3,7 @@ from .models import *
 from rest_framework import serializers
 
 
-class CateogiraSerializer(serializers.ModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
-        model = categoria
+        model = Product
         fields = '__all__'
